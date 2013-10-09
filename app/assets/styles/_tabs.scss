@@ -1,0 +1,7 @@
+*[data-tab] {
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    position: absolute;
+    opacity: 0;
+    height: 150px; // Set to desired height
+}

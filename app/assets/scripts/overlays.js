@@ -2,8 +2,8 @@ var overlays = function() {
     var overlayWrap = $('#Overlays');
 
     function init() {
-        $(document).on('touchstart', '[data-open="overlay"]', function() {
-            var el = $(this),
+        $(document).on('touchstart', '[data-open="overlay"]', function(e) {
+            var el = $(e.target),
                 whatToOpen = el.attr('href').replace('#', '');
 
             openOverlay(whatToOpen);
