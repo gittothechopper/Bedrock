@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css(.tmp) assets/styles/main.css -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+        <!-- endbuild -->
+        {{#if cssname}}<link rel="stylesheet" href="assets/styles/pages/{{cssname}}.css">{{/if}}
+    </head>
+    <body id="{{cssname}}">
+        <!-- Include a nav from partials -->
+        {{>nav}}
+
+      <div class="wrapper">
+        <!-- The body of the page -->
+        {{>body}}
+      </div>
+
+      <div id="References">
+          {{!-- Ref placeholder --}}
+      </div>
+
+{{>footer}}
+
+        <div id="modal-bg"></div>
+
+    </body>
+</html>

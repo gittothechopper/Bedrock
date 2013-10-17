@@ -1,0 +1,61 @@
+---
+title: Home
+---
+
+<h1>Yo Havas</h1>
+
+<h3>Reference popups</h3>
+
+<h5>Code Example</h5>
+<code><pre>&lt;sup data-refs=&quot;1&quot;&gt;1&lt;/sup&gt;<br/><br/>&lt;sup data-refs=&quot;1-2-4&quot;&gt;2-4&lt;/sup&gt;</pre></code>
+
+<h5>HTML Example</h5>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.<sup data-refs="1">1</sup></p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, distinctio ratione optio!<sup data-refs="2-3-4">2-4</sup></p>
+
+<h3>Modal popups</h3>
+
+<p>Modals are stackable</p>
+
+<h5>Code Example</h5>
+
+<code><pre>&lt;button data-modal=&quot;modal1&quot;&gt;Launch Modal&lt;/button&gt;<br/><br/>&lt;div id=&quot;modal1&quot; class=&quot;modal&quot;&gt;<br/>    &lt;!-- This button is essential do not use a &lt;a&gt; tag --&gt;<br/>    &lt;button class=&quot;close-modal&quot;&gt;&lt;/button&gt;<br/>&lt;/div&gt;</pre></code>
+
+<h5>HTML Example</h5>
+<button data-modal="modal1">Launch Modal</button>
+
+<div id="modal1" class="modal">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, corporis, fuga fugit magni et nostrum dolorum exercitationem corrupti earum quia voluptas quas doloribus maiores saepe officiis molestias similique ut facilis.
+    <button data-modal="modal2">Launch Modal in modal</button>
+    {{!-- This button is essential do not use a <a> tag --}}
+    <button class="close-modal"></button>
+</div>
+
+<div id="modal2" class="modal">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, sequi, reiciendis delectus rerum vitae ipsum nam sit accusantium eligendi dolor dignissimos.
+    <button data-modal="modal3">Launch Modal in modal</button>
+    <button class="close-modal"></button>
+</div>
+
+<div id="modal3" class="modal">
+    <img src="assets/img/cat.jpg" alt="cat" width="640" height="479">
+    <br>
+    <button data-modal="modal4">Launch Modal in modal</button>
+    <button class="close-modal"></button>
+</div>
+
+<div id="modal4" class="modal">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, dolore in magni expedita nam! Consequuntur at maxime autem perferendis. Perspiciatis, neque, exercitationem doloremque excepturi impedit blanditiis laborum error. Eaque, quasi.
+    <button data-modal="modal5">Launch Modal in modal</button>
+    <button class="close-modal"></button>
+</div>
+
+<div id="modal5" class="modal">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, doloribus, maxime, veritatis consectetur iure optio minus suscipit placeat sapiente ullam rem eaque libero temporibus tempora perspiciatis expedita sunt esse provident!
+    <button class="close-modal"></button>
+</div>
+
+<h5>Image for imagemin test</h5>
+
+<img src="assets/img/cat.jpg" alt="cat" width="640" height="480">
