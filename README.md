@@ -9,7 +9,7 @@ This doesn't effect the build in anyway and all tasks will work if you don't wan
 ### How to install
 
 ```
-$ git clone https://github.com/AlexMeah/Assemble-Boilerplate.git
+$ git clone https://github.com/AlexMeah/Bedrock.git
 ```
 
 To install dependencies, run:
