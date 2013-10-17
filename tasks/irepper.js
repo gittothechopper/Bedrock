@@ -113,7 +113,7 @@ module.exports = function(grunt) {
         prepareSpecificAssets = function(destName, fileSrc, fileName) {
             var regexCSS = new RegExp('url\\([\'"]?('+cfg.assets+'/.*?)[\'"]?\\)', 'ig'),
                 regexCSSLink = new RegExp('url\\([\'"]?(.*?)[\'"]?\\)', 'ig'),
-                regexBody = new RegExp('[href|src]=[\'"]('+cfg.assets+'/.*?)[\'"]', 'ig'),
+                regexBody = new RegExp('(?:href|src)=[\'"](.*?)[\'"]', 'ig'),
                 matchesCSS = new Array(),
                 matchesCSSLink = new Array(),
                 matchesBody = new Array();
