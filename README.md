@@ -1,28 +1,21 @@
-# generator-havas [![Build Status](https://secure.travis-ci.org/AlexMeah/generator-havas.png?branch=master)](https://travis-ci.org/AlexMeah/generator-havas)
+##Assemble-Boilerplate
 
-A generator for [Yeoman](http://yeoman.io).
+This is a clone of generator-havas without the yeoman over head. It assume iRepper is required (as most projects are now irep). 
 
+This doesn't effect the build in anyway and all tasks will work if you don't want to use iRepper.
 
 ## Getting Started
 
 ### How to install
 
-Make sure you have yo installed.
-
 ```
-$ npm install -g yo
+$ git clone https://github.com/AlexMeah/Assemble-Boilerplate.git
 ```
 
-To install generator-havas from npm, run:
+To install dependencies, run:
 
 ```
-$ npm install -g generator-havas
-```
-
-Finally, initiate the generator:
-
-```
-$ yo havas
+$ npm i & bower i
 ```
 
 ### A few extras
@@ -32,14 +25,14 @@ $ yo havas
 Yo Havas will also build and scaffold all the elements necessary for a new page, just run
 
 ```
-$ yo havas:page "Page Name Goes Here"
+$ grunt create --name "Page Name Goes Here"
 ```
 
-The string will be used as the title of the page, and will also be converted to uppercase and spaces converted to underscores for file and folder names.
+The string will be used as the title of the page, and will be converted to upper-case with spaces converted to underscores for file and folder names.
 
-The command creates a .hbs file, a sass file and a img folder.
+The command creates a .hbs file, a sass file and a img folder. If you need a js file create that manually as not every page needs one.
 
-A separate css file is required to stop irepper pulling in all assets, so don't move this to inside the build block
+A separate css file is required to stop iRepper pulling in all assets, so don't move this to inside the build block
 
 ####Modules
 
