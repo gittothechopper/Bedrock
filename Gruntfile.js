@@ -54,7 +54,8 @@ module.exports = function (grunt) {
                 layoutdir: '<%=yeoman.app %>/templates/layouts',
                 layout: 'layout.hbs',
                 assets: 'dist/images',
-                partials: ['<%=yeoman.app %>/templates/partials/*.hbs']
+                partials: ['<%=yeoman.app %>/templates/partials/*.hbs'],
+                data: ['config.json']
             },
             dist: {
                 expand: true,

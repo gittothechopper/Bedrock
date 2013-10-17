@@ -8,3 +8,5 @@
         <script src="assets/scripts/modal.js"></script>
         <script src="assets/scripts/main.js"></script>
         <!-- endbuild -->
+
+        {{#if_eq config.dev compare='true'}}<script src="assets/scripts/dev.js"></script>{{/if_eq}}
