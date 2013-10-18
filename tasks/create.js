@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 
     /*
         Create template pages and their associated assets
-        Run from the command line as follows: grunt create --name=$var
+        Run from the command line as follows: grunt create --name "dfhergfbsbn"
     */
 
     var name = grunt.option('name') || null;
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
             pagesDirectory = 'app/templates/pages/',
             cssDirectory = 'app/assets/styles/pages/',
             imagesDirectory = 'app/assets/img/',
-            javascriptDirectory = 'app/assets/scripts/',
+            javascriptDirectory = 'app/assets/scripts/pages/',
             modulePattern = 'var ' + name + ' = (function () {\n\tfunction init () {\n\t}\n\treturn {\n\t\tinit: init\n\t}\n}());\n\n$(function () {\n\t' + name + '.init();\n});',
             templateContent = '---\ntitle: ' + title + '\ncssname: ' + filename + '\njsname: ' + filename + '\n---';
 
