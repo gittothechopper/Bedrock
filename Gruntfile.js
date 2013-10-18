@@ -182,25 +182,6 @@ module.exports = function (grunt) {
         /*concat: {
             dist: {}
         },*/
-        // requirejs: {
-        //     dist: {
-        //         // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
-        //         options: {
-        //             // `name` and `out` is set by grunt-usemin
-        //             baseUrl: yeomanConfig.assets + '/scripts',
-        //             optimize: 'none',
-        //             // TODO: Figure out how to make sourcemaps work with grunt-usemin
-        //             // https://github.com/yeoman/grunt-usemin/issues/30
-        //             //generateSourceMaps: true,
-        //             // required to support SourceMaps
-        //             // http://requirejs.org/docs/errors.html#sourcemapcomments
-        //             preserveLicenseComments: false,
-        //             useStrict: true,
-        //             wrap: true
-        //             //uglify2: {} // https://github.com/mishoo/UglifyJS2
-        //         }
-        //     }
-        // },
         useminPrepare: {
             options: {
                 dest: '<%=yeoman.dist %>'
@@ -358,7 +339,6 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'copy:html',
-        //'requirejs',
         'concat',
         'cssmin',
         'uglify',
@@ -398,13 +378,13 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'copy:html',
-        //'requirejs',
         'concat',
         'cssmin',
         'uglify',
         'copy:dist',
         'copy:pages',
-        'usemin'
+        'usemin',
+        'remove_unused'
     ]);
 
     grunt.registerTask('default', [
