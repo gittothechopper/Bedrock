@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 		var files = grunt.file.expand({
 						filter: 'isFile',
 						cwd: 'dist'
-					}, ['**/*.{js,jpg,png,mp4,pdf}' ]);
+					}, ['**/*.{js,jpg,png,mp4,pdf,css}' ]);
 
 		// Store files that need scanning only css and html should contain links but js is there just in case
 		var filesToScan = grunt.file.expand({
