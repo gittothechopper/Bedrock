@@ -10,8 +10,8 @@
   "separator": "",
   "username": "rdfg",
   "password": "ftg",
-  "_comment_product" : "product ID: : one way to get this is by inspecting the HTML on the Product lookup popup within Salesforce",
-  "_comment_CLM_ID_vod__c" : "presentation ID: one way to get this is by inspecting the HTML on the Presentation lookup popup within Salesforce, or by looking at the URL of the presenation's page",
+  "_comment_product": "product ID: : one way to get this is by inspecting the HTML on the Product lookup popup within Salesforce",
+  "_comment_CLM_ID_vod__c": "presentation ID: one way to get this is by inspecting the HTML on the Presentation lookup popup within Salesforce, or by looking at the URL of the presenation's page",
   "product": "a00e0000004xse2",
   "CLM_ID_vod__c": "a11e0000000yTCs",
   "dependencies": {},
@@ -34,10 +34,10 @@
     "grunt-contrib-copy": ">=0.4.1",
     "grunt-contrib-concat": ">=0.3.0",
     "grunt-contrib-uglify": ">=0.2.0",
-    "grunt-contrib-compass": ">=0.5.0",
     "grunt-contrib-jshint": ">=0.6.3",
     "grunt-contrib-cssmin": ">=0.6.0",
-    "grunt-contrib-connect": ">=0.5.0"
+    "grunt-contrib-connect": ">=0.5.0",
+    "grunt-contrib-stylus": "~0.8.0"
   },
   "engines": {
     "node": ">=0.8.0"

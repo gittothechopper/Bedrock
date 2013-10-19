@@ -32,9 +32,9 @@ module.exports = function (grunt) {
                        '<%=yeoman.app %>/templates/partials/*.hbs'],
                 tasks: ['assemble:server']
             },
-            compass: {
-                files: ['<%=yeoman.assets %>/styles/**/*.{scss,sass}'],
-                tasks: ['compass:server', 'autoprefixer']
+            stylus: {
+                files: ['<%=yeoman.assets %>/styles/**/*.{styl}'],
+                tasks: ['stylus:server', 'autoprefixer']
             },
             livereload: {
                 options: {
@@ -135,33 +135,17 @@ module.exports = function (grunt) {
                 'test/spec/**/*.js'
             ]
         },
-        compass: {
-            options: {
-                sassDir: '<%=yeoman.assets %>/styles',
-                cssDir: '.tmp/assets/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%=yeoman.assets %>/images',
-                javascriptsDir: '<%=yeoman.assets %>/scripts',
-                fontsDir: '<%=yeoman.assets %>/styles/fonts',
-                importPath: '<%=yeoman.assets %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/styles/fonts',
-                relativeAssets: false
-            },
-            dist: {
-                options: {
-                    environment: 'production',
-                    generatedImagesDir: '<%=yeoman.dist %>/images/generated',
-                    outputStyle: 'compressed',
-                    debugInfo: false
-
+        stylus: {
+            global: {
+                files: {
+                  '.tmp/assets/styles/main.css': 'app/assets/styles/*.styl'
                 }
             },
-            server: {
-                options: {
-                    debugInfo: true
-                }
+            pages: {
+                expand: true,
+                cwd: 'app/assets/styles/pages/',
+                src: '*.styl',
+                dest: '.tmp/assets/styles/pages/'
             }
         },
         autoprefixer: {
@@ -243,8 +227,7 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '.htaccess',
                         'images/**/*.{webp,gif}',
-                        'styles/fonts/**/*.*',
-                        '<%=yeoman.app %>/bower_components/sass-bootstrap/fonts/*.*'
+                        'styles/fonts/**/*.*'
                     ]
                 }]
             },
@@ -280,14 +263,14 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
-                'compass',
+                'stylus',
                 'copy:styles'
             ],
             test: [
                 'copy:styles'
             ],
             dist: [
-                'compass',
+                'stylus',
                 'copy:styles',
                 'imagemin',
                 'svgmin'
@@ -333,7 +316,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('irep', [
         'clean:dist',
-        'compass:dist',
+        'stylus:dist',
         'assemble:dist',
         'useminPrepare',
         'concurrent:dist',
@@ -372,7 +355,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'compass:dist',
+        'stylus:dist',
         'assemble:dist',
         'useminPrepare',
         'concurrent:dist',
