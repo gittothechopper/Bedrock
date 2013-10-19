@@ -315,6 +315,7 @@ module.exports = function (grunt) {
     grunt.loadTasks('tasks');
 
     grunt.registerTask('irep', [
+        'dev_warn',
         'clean:dist',
         'stylus:dist',
         'assemble:dist',
@@ -354,6 +355,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
+        'dev_warn',
         'clean:dist',
         'stylus:dist',
         'assemble:dist',
