@@ -44,7 +44,7 @@ module.exports = function (grunt) {
                     '.tmp/*.html',
                     '.tmp/assets/styles/**/*.css',
                     '{.tmp,<%=yeoman.app %>}/assets/scripts/**/*.js',
-                    '<%=yeoman.assets %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+                    '<%=yeoman.assets %>/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
         },
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
                 flatten: true,
                 layoutdir: '<%=yeoman.app %>/templates/layouts',
                 layout: 'layout.hbs',
-                assets: 'dist/images',
+                assets: 'dist/img',
                 partials: ['<%=yeoman.app %>/templates/partials/*.hbs'],
                 data: ['config.json']
             },
@@ -226,8 +226,10 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '.htaccess',
-                        'images/**/*.{webp,gif}',
-                        'styles/fonts/**/*.*'
+                        'assets/img/**/*.{webp,gif}',
+                        'styles/fonts/**/*.*',
+                        'assets/scripts/pages/*.js',
+                        'assets/**/*.{pdf,mp4}'
                     ]
                 }]
             },
@@ -238,7 +240,7 @@ module.exports = function (grunt) {
                     cwd: '.tmp',
                     dest: '<%=yeoman.dist %>',
                     src: [
-                        '*.html'
+                        '**/*.html'
                     ]
                 }]
             },
@@ -289,7 +291,7 @@ module.exports = function (grunt) {
                 src: '<%=pkg.dest_jekyll %>',
                 dest: '<%=pkg.dest_irep %>',
                 assets: '<%=pkg.assets %>',
-                global_assets: ['img/global', 'css', 'js', 'fonts'],
+                global_assets: ['img/global', 'fonts'],
                 prefix: '<%=pkg.prefix %>',
                 suffix: '<%=pkg.suffix %>',
                 separator: '<%=pkg.separator %>',
@@ -317,7 +319,7 @@ module.exports = function (grunt) {
     grunt.registerTask('irep', [
         'dev_warn',
         'clean:dist',
-        'stylus:dist',
+        'stylus',
         'assemble:dist',
         'useminPrepare',
         'concurrent:dist',
@@ -357,7 +359,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'dev_warn',
         'clean:dist',
-        'stylus:dist',
+        'stylus',
         'assemble:dist',
         'useminPrepare',
         'concurrent:dist',

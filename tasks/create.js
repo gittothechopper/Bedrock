@@ -5,7 +5,8 @@ module.exports = function (grunt) {
         Run from the command line as follows: grunt create --name "dfhergfbsbn"
     */
 
-    var name = grunt.option('name') || null;
+    var name = grunt.option('name') || null,
+        type = grunt.option('type') || null;
 
     grunt.registerTask('create', function () {
 
@@ -23,17 +24,23 @@ module.exports = function (grunt) {
             grunt.fail.warn('Sorry, that page already exists', 1);
         }
 
-        // Make img directory
-        grunt.file.mkdir(imagesDirectory + filename);
-
-        // create css
-        grunt.file.write(cssDirectory + filename + '.scss', '#' + filename + ' {\n\n}');
-
-        // create js module
-        grunt.file.write(javascriptDirectory + filename + '.js', modulePattern);
-
-        // create page template
-        grunt.file.write(pagesDirectory + filename + '.hbs', templateContent);
-
+        switch(type) {
+            case 'js':
+                grunt.file.write(javascriptDirectory + filename + '.js', modulePattern);
+                break;
+            case 'css':
+                grunt.file.write(cssDirectory + filename + '.styl', '#' + filename + ' {\n\n}');
+            case 'img':
+                grunt.file.mkdir(imagesDirectory + filename);
+            case 'hbs':
+                grunt.file.write(pagesDirectory + filename + '.hbs', templateContent);
+            default:
+                // Make img directory
+                grunt.file.mkdir(imagesDirectory + filename);
+                // create css
+                grunt.file.write(cssDirectory + filename + '.scss', '#' + filename + ' {\n\n}');
+                // create page template
+                grunt.file.write(pagesDirectory + filename + '.hbs', templateContent);
+        }
     });
 };

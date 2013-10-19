@@ -78,6 +78,7 @@ Test links
 <script src="assets/scripts/refs.js"></script>
 <script src="assets/scripts/modal.js"></script>
 <script src="assets/scripts/main.js"></script>
+background: url('sdfc.png');
 <!-- endbuild -->
 
 {{!-- Page Specific JS if needed --}}
