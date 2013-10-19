@@ -136,6 +136,9 @@ module.exports = function (grunt) {
             ]
         },
         stylus: {
+            options: {
+                compress: true
+            },
             global: {
                 files: {
                   '.tmp/assets/styles/main.css': 'app/assets/styles/*.styl'
