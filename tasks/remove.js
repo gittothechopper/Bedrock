@@ -38,7 +38,6 @@ module.exports = function (grunt) {
 
         // Look for links to files
         filesToScan.forEach( function(path, i) {
-            if(path.indexOf())
             var fileSrc = grunt.file.read('dist/' + path);
             while ((matchesLink = regex.exec(fileSrc)) !== null) {
                 links.push(matchesLink[1]);

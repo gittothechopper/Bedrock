@@ -1,12 +1,12 @@
 #Assemble-Boilerplate
 
-This is a clone of generator-havas without the yeoman over head. It assumes iRepper is required (as most projects are now irep). 
+This is a clone of generator-havas without the yeoman over head. It assumes iRepper is required (as most projects are now irep).
 
 ###Features
 ---
 
 - Handlebars Templating (https://github.com/danharper/Handlebars-Helpers)
-- iOS specific auto-prefixing no more -webkit- 
+- iOS specific auto-prefixing no more -webkit-
 - Stylus
 - Minification of all the things
 - Removal of unused assets
@@ -30,7 +30,7 @@ $ npm i & bower i
 ###The Tasks
 ---
 
-####Server 
+####Server
 
 ```
 $ grunt server
@@ -51,7 +51,7 @@ This output can be uploaded to http://havasite.havaslynx.com/ for early testing/
 ####Create
 
 ```
-$ grunt create --name "Page name goes here" 
+$ grunt create --name "Page name goes here"
 ```
 
 Generates the following .hbs, .styl, an img folder. The name is used as the title of the page and converted to the following format PAGE_NAME_GOES_HERE for filenames and folders.
@@ -96,11 +96,11 @@ All the modules in this boilerplate avoid jQuery wherever possible because it's 
 
 ######Modals
 
-Yo Havas comes with a Modal module, the popups are infinitely stackable, and avoid jQuery where-ever doesn't cause me a headache to stay as performant as possible they run at well above/below depending how you look at it, 60fps in the dev tools timeline. 
+Yo Havas comes with a Modal module, the popups are infinitely stackable, and avoid jQuery where-ever doesn't cause me a headache to stay as performant as possible they run at well above/below depending how you look at it, 60fps in the dev tools timeline.
 
 ######Refs popups
 
-Refs are pulled from an array and created on request, again avoiding jQuery. They rely on the modal module for the popup functionality. 
+Refs are pulled from an array and created on request, again avoiding jQuery. They rely on the modal module for the popup functionality.
 
 ## License
 
