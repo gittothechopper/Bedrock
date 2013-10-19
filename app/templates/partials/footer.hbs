@@ -11,4 +11,7 @@
         {{!-- Page Specific JS if needed --}}
         {{#if jsname}}<script src="assets/scripts/pages/{{jsname}}.js"></script>{{/if}}
 
+        {{!-- Pull flexslider in if flag is set --}}
+        {{#if flexslider}}<script src="assets/scripts/flexslider.js"></script>{{/if}}
+
         {{#if_eq config.dev compare='true'}}<script src="assets/scripts/dev.js"></script>{{/if_eq}}
