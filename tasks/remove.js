@@ -4,19 +4,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('remove_unused', function () {
 
-		//Get extension so we can do stuff with it
-		function getExtension(path) {
-			var i = path.lastIndexOf('.');
-			return (i < 0) ? '' : path.substr(i);
-		}
-
-		//Get the name so we can do stuff with it
-		function getName(path) {
-			var index = path.lastIndexOf('/'),
-			sub = path.substr(index+1, 999).split('.')[0];
-			return sub;
-		}
-
 		// Store all files in dist folder
 		var files = grunt.file.expand({
 						filter: 'isFile',
@@ -31,10 +18,7 @@ module.exports = function (grunt) {
 
 		// Now that is some serious regex! Go to http://imgur.com/38iVjJf for a visual.
 		var regex = new RegExp('(?:href|src|url)[\=\(][\'"](?!(?:http|#|\s|"))(.+?(?=jpg|png|mp4|pdf|js)?)[\'"]', 'ig'),
-			orginal = files.length,
-			found = 0;
-
-		var links = [];
+			links = [];
 
 		// Look for links to files
 		filesToScan.forEach( function(path, i) {
@@ -47,20 +31,13 @@ module.exports = function (grunt) {
 		// Remove files that are being used from the array
 		links.forEach( function(path, i) {
 			if(files.indexOf(path) > -1) {
-				found++;
 				files.splice(path.indexOf(), 1);
 			}
 		});
 
-		// Create unused folder if it doesn't exist
-		if(!grunt.file.exists('unused')) {
-			grunt.file.mkdir('unused');
-		}
-
-		// Move unused files to unused folder
+		// Delete unused
 		files.forEach( function(path) {
-			var newPath = 'unused/' + getName(path) + getExtension(path);
-			fs.renameSync('dist/' + path, newPath);
+			grunt.file.delete('dist' + path);
 		});
 	});
 }
