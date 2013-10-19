@@ -3,7 +3,7 @@ var havas = havas || {};
 
 // Load required modules
 $(function () {
-    FastClick.attach(document.body);
-    refsModule.init();
-    modalModule.init();
+	FastClick.attach(document.body);
+	refsModule.init();
+	modalModule.init();
 });

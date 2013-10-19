@@ -1,17 +1,17 @@
-        <!-- build:js(app) assets/scripts/main.js -->
-        <script src="assets/bower_components/jquery/jquery.js"></script>
-        <script src="assets/scripts/jquery.touch.js"></script>
-        <script src="assets/scripts/fastclick.js"></script>
-        <script src="assets/scripts/polyfills.js"></script>
-        <script src="assets/scripts/refs.js"></script>
-        <script src="assets/scripts/modal.js"></script>
-        <script src="assets/scripts/main.js"></script>
-        <!-- endbuild -->
+	<!-- build:js(app) assets/scripts/main.js -->
+	<script src="assets/bower_components/jquery/jquery.js"></script>
+	<script src="assets/scripts/jquery.touch.js"></script>
+	<script src="assets/scripts/fastclick.js"></script>
+	<script src="assets/scripts/polyfills.js"></script>
+	<script src="assets/scripts/refs.js"></script>
+	<script src="assets/scripts/modal.js"></script>
+	<script src="assets/scripts/main.js"></script>
+	<!-- endbuild -->
 
-        {{!-- Page Specific JS if needed --}}
-        {{#if jsname}}<script src="assets/scripts/pages/{{jsname}}.js"></script>{{/if}}
+	{{!-- Page Specific JS if needed --}}
+	{{#if jsname}}<script src="assets/scripts/pages/{{jsname}}.js"></script>{{/if}}
 
-        {{!-- Pull flexslider in if flag is set --}}
-        {{#if flexslider}}<script src="assets/scripts/flexslider.js"></script>{{/if}}
+	{{!-- Pull flexslider in if flag is set --}}
+	{{#if flexslider}}<script src="assets/scripts/flexslider.js"></script>{{/if}}
 
-        {{#if_eq config.dev compare='true'}}<script src="assets/scripts/dev.js"></script>{{/if_eq}}
+	{{#if_eq config.dev compare='true'}}<script src="assets/scripts/dev.js"></script>{{/if_eq}}

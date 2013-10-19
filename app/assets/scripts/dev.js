@@ -1,14 +1,14 @@
 $(document).on('click', function (e) {
-    var left = e.pageX,
-        top = e.pageY;
+	var left = e.pageX,
+		top = e.pageY;
 
-    if(e.ctrlKey) {
-        var ref = prompt('Please enter the ref number.');
+	if(e.ctrlKey) {
+		var ref = prompt('Please enter the ref number.');
 
-        if(ref !== undefined) {
-            console.log('<button data-refs="' + ref + '" style="left: ' + left + 'px; top: ' + top + 'px;></button>');
-        }
-    }
+		if(ref !== undefined) {
+			console.log('<button data-refs="' + ref + '" style="left: ' + left + 'px; top: ' + top + 'px;></button>');
+		}
+	}
 })
 
 // Page array for swipe
@@ -51,9 +51,9 @@ page[33] = '/PI.html';
 var i = page.indexOf(window.location.pathname);
 
 $(document).on('swipeLeft', function() {
-    window.location = page[i+1];
+	window.location = page[i+1];
 });
 
 $(document).on('swipeRight', function() {
-    window.location = page[i-1];
+	window.location = page[i-1];
 });
