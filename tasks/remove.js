@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 
 		// Delete unused
 		files.forEach( function(path) {
-			grunt.file.delete('dist' + path);
+			grunt.file.delete('dist/' + path);
 		});
 	});
 }
