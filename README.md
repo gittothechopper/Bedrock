@@ -1,12 +1,21 @@
-##Assemble-Boilerplate
+#Assemble-Boilerplate
 
-This is a clone of generator-havas without the yeoman over head. It assume iRepper is required (as most projects are now irep). 
+This is a clone of generator-havas without the yeoman over head. It assumes iRepper is required (as most projects are now irep). 
 
-This doesn't effect the build in anyway and all tasks will work if you don't want to use iRepper.
+###Features
+---
 
-## Getting Started
+- Handlebars Templating (https://github.com/danharper/Handlebars-Helpers)
+- iOS specific auto-prefixing no more -webkit- 
+- Stylus
+- Minification of all the things
+- Removal of unused assets
+- etc.
 
-### How to install
+###Getting Started
+---
+
+###How to install
 
 ```
 $ git clone https://github.com/AlexMeah/Bedrock.git
@@ -18,21 +27,68 @@ To install dependencies, run:
 $ npm i & bower i
 ```
 
-### A few extras
+###The Tasks
+---
 
-######Page/Slide creation
-
-Yo Havas will also build and scaffold all the elements necessary for a new page, just run
+####Server 
 
 ```
-$ grunt create --name "Page Name Goes Here"
+$ grunt server
 ```
 
-The string will be used as the title of the page, and will be converted to upper-case with spaces converted to underscores for file and folder names.
+This will open chrome, and provide you with live reload
 
-The command creates a .hbs file, a sass file and a img folder. If you need a js file create that manually as not every page needs one.
+####Build
 
-A separate css file is required to stop iRepper pulling in all assets, so don't move this to inside the build block
+```
+$ grunt build
+```
+
+Before this does anything it will warn you if you have dev enabled, it will then compile your project and minify it, before scanning through and removing all unused assets.
+
+This output can be uploaded to http://havasite.havaslynx.com/ for early testing/proof-reading.
+
+####Create
+
+```
+$ grunt create --name "Page name goes here" 
+```
+
+Generates the following .hbs, .styl, an img folder. The name is used as the title of the page and converted to the following format PAGE_NAME_GOES_HERE for filenames and folders.
+
+######Optional
+
+Specify what you need if you only need one type of file.
+
+```
+$ grunt create --name "Page name goes here" --type js
+```
+
+***Supported types***
+
+- js
+- css
+- img
+- hbs
+
+####iRep
+
+```
+$ grunt irep
+```
+
+It does a lot docs can be found here http://havasite.havaslynx.com/sites/iRepper-Docs/
+
+###A few extras
+---
+
+####Dev Helpers
+
+```
+ctrl+click
+```
+
+Will prompt for a ref number then write the code needed to the console, click around fill them all in then just paste them all into your code :)
 
 ####Modules
 
