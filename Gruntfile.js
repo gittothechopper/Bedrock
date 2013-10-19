@@ -34,7 +34,7 @@ module.exports = function (grunt) {
             },
             stylus: {
                 files: ['<%=yeoman.assets %>/styles/**/*.{styl}'],
-                tasks: ['stylus:server', 'autoprefixer']
+                tasks: ['stylus', 'autoprefixer']
             },
             livereload: {
                 options: {
