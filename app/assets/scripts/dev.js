@@ -1,6 +1,6 @@
 $(document).on('click', function (e) {
-	var left = e.pageX,
-		top = e.pageY;
+	var left = e.pageX - 20,
+		top = e.pageY - 20;
 
 	if(e.ctrlKey) {
 		var ref = prompt('Please enter the ref number.');
