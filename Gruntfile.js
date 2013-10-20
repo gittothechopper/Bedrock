@@ -136,19 +136,18 @@ module.exports = function (grunt) {
 			]
 		},
 		sass: {
-			options: {
-				outputStyle: 'compressed'
-			},
-			global: {
+			// Can't use this to compress css atm due to a bug
+			globalStyles: {
 				files: {
-				  '.tmp/assets/styles/main.css': 'app/assets/styles/*.styl'
+				  '.tmp/assets/styles/main.css': 'app/assets/styles/*.scss'
 				}
 			},
 			pages: {
 				expand: true,
 				cwd: 'app/assets/styles/pages/',
-				src: '*.styl',
-				dest: '.tmp/assets/styles/pages/'
+				src: '*.scss',
+				dest: '.tmp/assets/styles/pages/',
+				ext: '.css'
 			}
 		},
 		autoprefixer: {
@@ -164,11 +163,6 @@ module.exports = function (grunt) {
 				}]
 			}
 		},
-		// not used since Uglify task does concat,
-		// but still available if needed
-		/*concat: {
-			dist: {}
-		},*/
 		useminPrepare: {
 			options: {
 				dest: '<%=yeoman.dist %>'
@@ -180,7 +174,7 @@ module.exports = function (grunt) {
 				dirs: ['<%=yeoman.dist %>']
 			},
 			html: ['<%=yeoman.dist %>/**/*.html'],
-			css: ['<%=yeoman.dist %>/styles/**/*.css']
+			css: ['<%=yeoman.dist %>/assets/styles/**/*.css']
 		},
 		imagemin: {
 			dist: {
@@ -203,20 +197,17 @@ module.exports = function (grunt) {
 			}
 		},
 		cssmin: {
-			// This task is pre-configured if you do not wish to use Usemin
-			// blocks for your CSS. By default, the Usemin block from your
-			// `index.html` will take care of minification, e.g.
-			//
-			//     <!-- build:css({.tmp,app}) styles/main.css -->
-			//
-			// dist: {
-			//     files: {
-			//         '<%=yeoman.dist %>/styles/main.css': [
-			//             '.tmp/styles/**/*.css',
-			//             '<%=yeoman.assets %>/styles/**/*.css'
-			//         ]
-			//     }
-			// }
+			pages: {
+				files: [{
+					expand: true,
+					dot: true,
+					cwd: '.tmp/assets/styles/pages',
+					dest: '<%=yeoman.dist %>/assets/styles/pages',
+					src: [
+						'*.css'
+					]
+				}]
+			}
 		},
 		// Put files not handled in other tasks here
 		copy: {
@@ -232,6 +223,7 @@ module.exports = function (grunt) {
 						'assets/img/**/*.{webp,gif}',
 						'styles/fonts/**/*.*',
 						'assets/scripts/pages/*.js',
+						'assets/styles/pages/*.css',
 						'assets/**/*.{pdf,mp4}'
 					]
 				}]
@@ -246,48 +238,16 @@ module.exports = function (grunt) {
 						'**/*.html'
 					]
 				}]
-			},
-			styles: {
-				expand: true,
-				dot: true,
-				cwd: '<%=yeoman.assets %>/styles',
-				dest: '.tmp/assets/styles/',
-				src: '**/*.css'
-			},
-			pages: {
-				files: [{
-					expand: true,
-					dot: true,
-					cwd: '.tmp/assets/styles/pages',
-					dest: '<%=yeoman.dist %>/assets/styles/pages',
-					src: [
-						'*.css'
-					]
-				}]
 			}
 		},
 		concurrent: {
 			server: [
-				'sass',
-				'copy:styles'
-			],
-			test: [
-				'copy:styles'
+				'sass'
 			],
 			dist: [
-				'sass',
-				'copy:styles',
 				'imagemin',
 				'svgmin'
 			]
-		},
-		bower: {
-			options: {
-				exclude: ['modernizr']
-			},
-			all: {
-				rjsConfig: '<%=yeoman.assets %>/scripts/main.js'
-			}
 		},
 		irepper: {
 			default: {
@@ -323,16 +283,15 @@ module.exports = function (grunt) {
 		'dev_warn',
 		'clean:dist',
 		'sass',
+		'autoprefixer',
 		'assemble:dist',
+		'copy:html',
+		'copy:dist',
 		'useminPrepare',
 		'concurrent:dist',
-		'autoprefixer',
-		'copy:html',
 		'concat',
 		'cssmin',
 		'uglify',
-		'copy:dist',
-		'copy:pages',
 		'usemin',
 		'irepper'
 	]);
@@ -363,16 +322,15 @@ module.exports = function (grunt) {
 		'dev_warn',
 		'clean:dist',
 		'sass',
+		'autoprefixer',
 		'assemble:dist',
+		'copy:html',
+		'copy:dist',
 		'useminPrepare',
 		'concurrent:dist',
-		'autoprefixer',
-		'copy:html',
 		'concat',
 		'cssmin',
 		'uglify',
-		'copy:dist',
-		'copy:pages',
 		'usemin',
 		'remove_unused'
 	]);
