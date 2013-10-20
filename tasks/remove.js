@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 module.exports = function (grunt) {
 
 	grunt.registerTask('remove_unused', function () {
@@ -16,7 +18,10 @@ module.exports = function (grunt) {
 
 		// Now that is some serious regex! Go to http://imgur.com/38iVjJf for a visual.
 		var regex = new RegExp('(?:href|src|url)[\=\(][\'"](?!(?:http|#|\s|"))(.+?(?=jpg|png|mp4|pdf|js)?)[\'"]', 'ig'),
-			links = [];
+			orginal = files.length,
+			found = 0;
+
+		var links = [];
 
 		// Look for links to files
 		filesToScan.forEach( function(path, i) {
@@ -29,11 +34,11 @@ module.exports = function (grunt) {
 		// Remove files that are being used from the array
 		links.forEach( function(path, i) {
 			if(files.indexOf(path) > -1) {
-				files.splice(path.indexOf(), 1);
+				files.splice(files.indexOf(path), 1);
 			}
 		});
 
-		// Delete unused
+		// Move unused files to unused folder
 		files.forEach( function(path) {
 			grunt.file.delete('dist/' + path);
 		});
