@@ -32,9 +32,9 @@ module.exports = function (grunt) {
 						'<%=yeoman.app %>/templates/partials/*.hbs'],
 				tasks: ['assemble:server']
 			},
-			stylus: {
+			sass: {
 				files: ['<%=yeoman.assets %>/styles/**/*.{styl}'],
-				tasks: ['stylus', 'autoprefixer']
+				tasks: ['sass', 'autoprefixer']
 			},
 			livereload: {
 				options: {
@@ -135,9 +135,9 @@ module.exports = function (grunt) {
 				'test/spec/**/*.js'
 			]
 		},
-		stylus: {
+		sass: {
 			options: {
-				compress: true
+				outputStyle: 'compressed'
 			},
 			global: {
 				files: {
@@ -268,14 +268,14 @@ module.exports = function (grunt) {
 		},
 		concurrent: {
 			server: [
-				'stylus',
+				'sass',
 				'copy:styles'
 			],
 			test: [
 				'copy:styles'
 			],
 			dist: [
-				'stylus',
+				'sass',
 				'copy:styles',
 				'imagemin',
 				'svgmin'
@@ -322,7 +322,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('irep', [
 		'dev_warn',
 		'clean:dist',
-		'stylus',
+		'sass',
 		'assemble:dist',
 		'useminPrepare',
 		'concurrent:dist',
@@ -362,7 +362,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'dev_warn',
 		'clean:dist',
-		'stylus',
+		'sass',
 		'assemble:dist',
 		'useminPrepare',
 		'concurrent:dist',
