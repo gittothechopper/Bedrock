@@ -24,7 +24,7 @@ $ git clone https://github.com/AlexMeah/Bedrock.git
 To install dependencies, run:
 
 ```
-$ npm i & bower i
+$ npm i
 ```
 
 ###The Tasks
@@ -81,6 +81,10 @@ It does a lot docs can be found here http://havasite.havaslynx.com/sites/iRepper
 
 ###A few extras
 ---
+
+####Scaffolder
+
+http://proto.alexmeah.com:3000
 
 ####Dev Helpers
 
