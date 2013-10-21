@@ -331,8 +331,7 @@ module.exports = function (grunt) {
 		'concat',
 		'cssmin',
 		'uglify',
-		'usemin',
-		'remove_unused'
+		'usemin'
 	]);
 
 	grunt.registerTask('default', [
