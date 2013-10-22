@@ -10,7 +10,7 @@ var refsModule = (function () {
 
 	function init() {
 		// Wrap in function to avoid immediate call
-		$(document).on('click', 'sup[data-refs]', function () {
+		$(document).on('click', '[data-refs]', function () {
 			getRefs($(this).data('refs'));
 		});
 	}

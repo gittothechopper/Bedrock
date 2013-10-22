@@ -9,7 +9,7 @@ var modalModule = (function () {
 		modalBg = getId('modal-bg');
 
 		// Wrap in function to avoid immediate call
-		$(document).on('click', 'button[data-modal]', function () {
+		$(document).on('click', '[data-modal]', function () {
 			openModal($(this).data('modal'));
 		});
 
