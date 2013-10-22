@@ -33,7 +33,7 @@ module.exports = function (grunt) {
 				tasks: ['assemble:server']
 			},
 			sass: {
-				files: ['<%=yeoman.assets %>/styles/**/*.{styl}'],
+				files: ['<%=yeoman.assets %>/styles/**/*.{scss, sass}'],
 				tasks: ['sass', 'autoprefixer']
 			},
 			livereload: {
@@ -331,8 +331,7 @@ module.exports = function (grunt) {
 		'concat',
 		'cssmin',
 		'uglify',
-		'usemin',
-		'remove_unused'
+		'usemin'
 	]);
 
 	grunt.registerTask('default', [
