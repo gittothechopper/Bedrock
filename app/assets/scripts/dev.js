@@ -1,3 +1,5 @@
+var wrap = $('.wrapper');
+
 $(document).on('click', function (e) {
 	var left = e.pageX - 20,
 		top = e.pageY - 20;
@@ -6,7 +8,8 @@ $(document).on('click', function (e) {
 		var ref = prompt('Please enter the ref number.');
 
 		if(ref !== undefined) {
-			console.log('<button data-refs="' + ref + '" style="left: ' + left + 'px; top: ' + top + 'px;></button>');
+			wrap.append('<button data-refs="' + ref + '" style="position: absolute; left: ' + left + 'px; top: ' + top + 'px;"></button>');
+			console.log('<button data-refs="' + ref + '" style="position: absolute; left: ' + left + 'px; top: ' + top + 'px;"></button>');
 		}
 	}
 })
