@@ -84,7 +84,7 @@ It does a lot docs can be found here http://havasite.havaslynx.com/sites/iRepper
 
 ####Scaffolder
 
-http://proto.alexmeah.com:3000
+http://node.alexmeah.com:3000
 
 ####Dev Helpers
 
@@ -96,7 +96,7 @@ Will prompt for a ref number then write the code needed to the console, click ar
 
 ####Modules
 
-All the modules in this boilerplate avoid jQuery wherever possible because it's slow at even simple things [http://jsperf.com/add-class-test](http://jsperf.com/add-class-test "http://jsperf.com/add-class-test")
+All the modules in this boilerplate avoid jQuery wherever possible because it's slow at even simple things [http://jsperf.com/add-class-test](http://jsperf.com/add-class-test "http://jsperf.com/add-class-test") what about zepto [http://jsperf.com/add-class-test/2](http://jsperf.com/add-class-test/2 "http://jsperf.com/add-class-test/2")
 
 ######Modals
 
