@@ -17,7 +17,7 @@ module.exports = function (grunt) {
 			imagesDirectory = 'app/assets/img/',
 			javascriptDirectory = 'app/assets/scripts/pages/',
 			modulePattern = 'var ' + name + ' = (function () {\n\tfunction init () {\n\t}\n\treturn {\n\t\tinit: init\n\t}\n}());\n\n$(function () {\n\t' + name + '.init();\n});',
-			templateContent = '---\ntitle: ' + title + '\ncssname: ' + filename + '\njsname: ' + filename + '\n---';
+			templateContent = '---\ntitle: ' + title + '\ncssname: ' + filename + '\n---';
 
 		// Cursory check that the file doesn't exist
 		if (grunt.file.exists(pagesDirectory + filename + '.hbs')) {
