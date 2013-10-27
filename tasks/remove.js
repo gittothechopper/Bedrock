@@ -1,46 +1,52 @@
-var fs = require('fs');
+var fs = require('fs'),
+	_ = require('underscore'),
+	path =require('path');
 
 module.exports = function (grunt) {
 
-	grunt.registerTask('remove_unused', function () {
+	grunt.registerTask('remove', function () {
 
-		// Store all files in dist folder
-		var files = grunt.file.expand({
+		// Store all assets in dist folder
+		var assets = grunt.file.expand({
 						filter: 'isFile',
 						cwd: 'dist'
 					}, ['**/*.{js,jpg,png,mp4,pdf,css}' ]);
 
 		// Store files that need scanning only css and html should contain links but js is there just in case
-		var filesToScan = grunt.file.expand({
+		var files = grunt.file.expand({
 							 filter: 'isFile',
 							 cwd: 'dist'
-						 }, ['**/*.{js,css,html}' ]);
+						 }, ['**/*.{js,css,html}']);
 
 		// Now that is some serious regex! Go to http://imgur.com/38iVjJf for a visual.
 		var regex = new RegExp('(?:href|src|url)[\=\(][\'"](?!(?:http|#|\s|"))(.+?(?=jpg|png|mp4|pdf|js)?)[\'"]', 'ig'),
-			orginal = files.length,
-			found = 0;
+			links = [],
+			assetsBase = [];
 
-		var links = [];
-
-		// Look for links to files
-		filesToScan.forEach( function(path, i) {
-			var fileSrc = grunt.file.read('dist/' + path);
+		// Look for assets links in files
+		files.forEach( function(file, i) {
+			var fileSrc = grunt.file.read('dist/' + file);
 			while ((matchesLink = regex.exec(fileSrc)) !== null) {
-				links.push(matchesLink[1]);
+				// Account for links with some form of ../
+				links.push(path.join(path.dirname(file), path.normalize(matchesLink[1])));
 			}
 		});
+
+		// Remove dupes
+		var linksUnique = _.unique(links);
 
 		// Remove files that are being used from the array
-		links.forEach( function(path, i) {
-			if(files.indexOf(path) > -1) {
-				files.splice(files.indexOf(path), 1);
+		for (var i=0; i<linksUnique.length; i++) {
+			index = assets.indexOf(linksUnique[i].replace(/\\/g, '/'));
+			if (index > -1) {
+				assets.splice(index, 1);
 			}
-		});
+		}
 
-		// Move unused files to unused folder
-		files.forEach( function(path) {
-			grunt.file.delete('dist/' + path);
+		// Delete unused files
+		assets.forEach( function(file) {
+			console.log('Removing: ', file)
+			grunt.file.delete('dist/' + file);
 		});
 	});
 }
