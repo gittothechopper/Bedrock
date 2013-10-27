@@ -86,6 +86,14 @@ It does a lot docs can be found here http://havasite.havaslynx.com/sites/iRepper
 
 http://node.alexmeah.com:3000
 
+####Icon Generator
+
+```
+$ phantomjs gen_icon.js
+```
+
+Uses http://node.alexmeah.com:3005
+
 ####Dev Helpers
 
 ```
