@@ -33,7 +33,7 @@ module.exports = function (grunt) {
 				tasks: ['assemble:server']
 			},
 			sass: {
-				files: ['<%=yeoman.assets %>/styles/**/*.{scss, sass}'],
+				files: ['<%=yeoman.assets %>/css/**/*.{scss, sass}'],
 				tasks: ['sass', 'autoprefixer']
 			},
 			livereload: {
@@ -42,8 +42,8 @@ module.exports = function (grunt) {
 				},
 				files: [
 					'.tmp/*.html',
-					'.tmp/assets/styles/**/*.css',
-					'{.tmp,<%=yeoman.app %>}/assets/scripts/**/*.js',
+					'.tmp/assets/css/**/*.css',
+					'{.tmp,<%=yeoman.app %>}/assets/js/**/*.js',
 					'<%=yeoman.assets %>/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
 				]
 			}
@@ -130,23 +130,23 @@ module.exports = function (grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'<%=yeoman.assets %>/scripts/**/*.js',
-				'!<%=yeoman.assets %>/scripts/vendor/*',
+				'<%=yeoman.assets %>/js/**/*.js',
+				'!<%=yeoman.assets %>/js/vendor/*',
 				'test/spec/**/*.js'
 			]
 		},
 		sass: {
 			// Can't use this to compress css atm due to a bug
-			globalStyles: {
+			globalcss: {
 				files: {
-				  '.tmp/assets/styles/main.css': 'app/assets/styles/*.scss'
+				  '.tmp/assets/css/main.css': 'app/assets/css/*.scss'
 				}
 			},
 			pages: {
 				expand: true,
-				cwd: 'app/assets/styles/pages/',
+				cwd: 'app/assets/css/pages/',
 				src: '*.scss',
-				dest: '.tmp/assets/styles/pages/',
+				dest: '.tmp/assets/css/pages/',
 				ext: '.css'
 			}
 		},
@@ -157,9 +157,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '.tmp/assets/styles/',
+					cwd: '.tmp/assets/css/',
 					src: '**/*.css',
-					dest: '.tmp/assets/styles/'
+					dest: '.tmp/assets/css/'
 				}]
 			}
 		},
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
 				dirs: ['<%=yeoman.dist %>']
 			},
 			html: ['<%=yeoman.dist %>/**/*.html'],
-			css: ['<%=yeoman.dist %>/assets/styles/**/*.css']
+			css: ['<%=yeoman.dist %>/assets/css/**/*.css']
 		},
 		imagemin: {
 			dist: {
@@ -201,8 +201,8 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					dot: true,
-					cwd: '.tmp/assets/styles/pages',
-					dest: '<%=yeoman.dist %>/assets/styles/pages',
+					cwd: '.tmp/assets/css/pages',
+					dest: '<%=yeoman.dist %>/assets/css/pages',
 					src: [
 						'*.css'
 					]
@@ -221,9 +221,9 @@ module.exports = function (grunt) {
 						'*.{ico,png,txt}',
 						'.htaccess',
 						'assets/img/**/*.{webp,gif}',
-						'styles/fonts/**/*.*',
-						'assets/scripts/pages/*.js',
-						'assets/styles/pages/*.css',
+						'css/fonts/**/*.*',
+						'assets/js/pages/*.js',
+						'assets/css/pages/*.css',
 						'assets/**/*.{pdf,mp4}'
 					]
 				}]
