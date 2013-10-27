@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 				grunt.file.write(javascriptDirectory + filename + '.js', modulePattern);
 				break;
 			case 'css':
-				grunt.file.write(cssDirectory + filename + '.styl', '#' + filename + ' {\n\n}');
+				grunt.file.write(cssDirectory + filename + '.scss', '#' + filename + ' {\n\n}');
 			case 'img':
 				grunt.file.mkdir(imagesDirectory + filename);
 			case 'hbs':
