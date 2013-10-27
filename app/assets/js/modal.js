@@ -18,6 +18,11 @@ var modalModule = (function () {
 		});
 	}
 
+	function displayNone() {
+		this.style.display = 'none';
+		this.removeEventListener('webkitTransitionEnd',displayNone,false);
+	}
+
 	function openModal(id) {
 		// Get id of el to show and getElementById no need for jquery
 		var el = getId(id.replace('#', ''));
@@ -48,14 +53,12 @@ var modalModule = (function () {
 				el[0].classList.remove('active');
 				el[0].style.display = 'none';
 				modalBg.classList.remove('active');
-				setTimeout(function () {
-					modalBg.style.display = 'none';
-				}, 200);
+				modalBg.addEventListener('webkitTransitionEnd transitionend', displayNone, false);
 			});
 		} else {
 			window.requestAnimationFrame(function () {
 				el[0].classList.remove('active');
-				el[0].style.display = 'none';
+				el[0].addEventListener('webkitTransitionEnd transitionend', displayNone, false);
 			});
 		}
 	}
