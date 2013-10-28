@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 	var yeomanConfig = {
 		app: 'app',
 		dist: 'dist',
-		assets: 'app/assets'
+		assets: 'assets'
 	};
 
 	grunt.initConfig({
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
 				tasks: ['assemble:server']
 			},
 			sass: {
-				files: ['<%=yeoman.assets %>/css/**/*.{scss, sass}'],
+				files: ['<%=yeoman.app %>/<%=yeoman.assets %>/css/**/*.{scss, sass}'],
 				tasks: ['sass', 'autoprefixer']
 			},
 			livereload: {
@@ -42,9 +42,9 @@ module.exports = function (grunt) {
 				},
 				files: [
 					'.tmp/*.html',
-					'.tmp/assets/css/**/*.css',
-					'{.tmp,<%=yeoman.app %>}/assets/js/**/*.js',
-					'<%=yeoman.assets %>/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
+					'.tmp/<%=yeoman.assets %>/css/**/*.css',
+					'{.tmp,<%=yeoman.app %>}/<%=yeoman.assets %>/js/**/*.js',
+					'<%=yeoman.app %>/<%=yeoman.assets %>/img/**/*.{png,jpg,jpeg,gif,webp,svg}'
 				]
 			}
 		},
@@ -130,8 +130,8 @@ module.exports = function (grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'<%=yeoman.assets %>/js/**/*.js',
-				'!<%=yeoman.assets %>/js/vendor/*',
+				'<%=yeoman.app %>/<%=yeoman.assets %>/js/**/*.js',
+				'!<%=yeoman.app %>/<%=yeoman.assets %>/js/vendor/*',
 				'test/spec/**/*.js'
 			]
 		},
@@ -139,14 +139,14 @@ module.exports = function (grunt) {
 			// Can't use this to compress css atm due to a bug
 			globalcss: {
 				files: {
-				  '.tmp/assets/css/main.css': 'app/assets/css/*.scss'
+				  '.tmp/<%=yeoman.assets %>/css/main.css': '<%=yeoman.app %>/<%=yeoman.assets %>/css/*.scss'
 				}
 			},
 			pages: {
 				expand: true,
-				cwd: 'app/assets/css/pages/',
+				cwd: '<%=yeoman.app %>/<%=yeoman.assets %>/css/pages/',
 				src: '*.scss',
-				dest: '.tmp/assets/css/pages/',
+				dest: '.tmp/<%=yeoman.assets %>/css/pages/',
 				ext: '.css'
 			}
 		},
@@ -157,9 +157,9 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '.tmp/assets/css/',
+					cwd: '.tmp/<%=yeoman.assets %>/css/',
 					src: '**/*.css',
-					dest: '.tmp/assets/css/'
+					dest: '.tmp/<%=yeoman.assets %>/css/'
 				}]
 			}
 		},
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
 				dirs: ['<%=yeoman.dist %>']
 			},
 			html: ['<%=yeoman.dist %>/**/*.html'],
-			css: ['<%=yeoman.dist %>/assets/css/**/*.css']
+			css: ['<%=yeoman.dist %>/<%=yeoman.assets %>/css/**/*.css']
 		},
 		imagemin: {
 			dist: {
@@ -190,18 +190,18 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%=yeoman.assets %>/img',
+					cwd: '<%=yeoman.app %>/<%=yeoman.assets %>/img',
 					src: '**/*.svg',
-					dest: '<%=yeoman.dist %>/assets/img'
+					dest: '<%=yeoman.dist %>/<%=yeoman.assets %>/img'
 				}]
 			}
 		},
 		uglify: {
 			minify: {
 				expand: true,
-				cwd: '<%=yeoman.assets %>/js/pages',
+				cwd: '<%=yeoman.app %>/<%=yeoman.assets %>/js/pages',
 				src: ['*.js'],
-				dest: '<%=yeoman.dist %>/assets/js/pages',
+				dest: '<%=yeoman.dist %>/<%=yeoman.assets %>/js/pages',
 				ext: '.js'
 			}
 		},
@@ -210,8 +210,8 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					dot: true,
-					cwd: '.tmp/assets/css/pages',
-					dest: '<%=yeoman.dist %>/assets/css/pages',
+					cwd: '.tmp/<%=yeoman.assets %>/css/pages',
+					dest: '<%=yeoman.dist %>/<%=yeoman.assets %>/css/pages',
 					src: [
 						'*.css'
 					]
