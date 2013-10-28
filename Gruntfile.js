@@ -196,6 +196,15 @@ module.exports = function (grunt) {
 				}]
 			}
 		},
+		uglify: {
+			minify: {
+				expand: true,
+				cwd: '<%=yeoman.assets %>/js/pages',
+				src: ['*.js'],
+				dest: '<%=yeoman.dist %>/assets/js/pages',
+				ext: '.js'
+			}
+		},
 		cssmin: {
 			pages: {
 				files: [{
@@ -218,12 +227,10 @@ module.exports = function (grunt) {
 					cwd: '<%=yeoman.app %>',
 					dest: '<%=yeoman.dist %>',
 					src: [
-						'*.{ico,png,txt}',
+						'*.{ico,png,txt,md}',
 						'.htaccess',
 						'assets/img/**/*.{webp,gif}',
 						'css/fonts/**/*.*',
-						'assets/js/pages/*.js',
-						'assets/css/pages/*.css',
 						'assets/**/*.{pdf,mp4}'
 					]
 				}]
