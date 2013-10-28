@@ -1,36 +1,52 @@
 <!doctype html>
 <html lang="en">
-		<head>
-				<meta charset="utf-8">
-				<meta http-equiv="X-UA-Compatible" content="IE=edge">
-				<title>{{title}}</title>
-				<meta name="description" content="">
-				<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-				<meta name="apple-mobile-web-app-capable" content="yes">
-				<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-				<meta name="format-detection" content="telephone=no">
-				<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-				<!-- build:css(.tmp) assets/css/main.css -->
-				<link rel="stylesheet" href="assets/css/main.css">
-				<!-- endbuild -->
-				{{#if cssname}}<link rel="stylesheet" href="assets/css/pages/{{cssname}}.css">{{/if}}
-		</head>
-		<body id="{{cssname}}">
-				<!-- Include a nav from partials -->
-				{{>nav}}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{title}}</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="format-detection" content="telephone=no">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.tmp) assets/css/main.css -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- endbuild -->
+	{{#if cssname}}<link rel="stylesheet" href="assets/css/pages/{{cssname}}.css">{{/if}}
+</head>
+<body id="{{cssname}}">
+	<!-- Include a nav from partials -->
+	{{>nav}}
 
-			<div class="wrapper">
-				<!-- The body of the page -->
-				{{>body}}
-			</div>
+	<div class="wrapper">
+		<!-- The body of the page -->
+		{{>body}}
+	</div>
 
-			<div id="References">
-					{{!-- Ref placeholder --}}
-			</div>
+	<div id="References">
+		{{!-- Ref placeholder --}}
+	</div>
 
-{{>footer}}
+	<!-- build:js assets/js/main.js -->
+	<script src="assets/js/vendor/jquery-2.0.3.min.js"></script>
+	<script src="assets/js/vendor/jquery.touch.js"></script>
+	<script src="assets/js/vendor/fastclick.js"></script>
+	<script src="assets/js/vendor/polyfills.js"></script>
+	<script src="assets/js/refs.js"></script>
+	<script src="assets/js/modal.js"></script>
+	<script src="assets/js/main.js"></script>
+	<!-- endbuild -->
 
-				<div id="modal-bg"></div>
+	{{!-- Pull flexslider in if flag is set --}}
+	{{#if flexslider}}<script src="assets/js/vendor/flexslider.js"></script>{{/if}}
 
-		</body>
+	{{!-- Page Specific JS if needed --}}
+	{{#if jsname}}<script src="assets/js/pages/{{jsname}}.js"></script>{{/if}}
+
+	{{#if_eq config.dev compare='true'}}<script src="assets/js/libs/dev.js"></script>{{/if_eq}}
+
+	<div id="modal-bg"></div>
+
+</body>
 </html>
