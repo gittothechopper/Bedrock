@@ -22,12 +22,11 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('irepper', 'iRep build automation task', function() {
 
 		var cfg = this.data,
-			filesDone = new Array(),
-			pdfsDone = new Array(),
+			filesDone = [],
+			pdfsDone = [],
 			files = grunt.file.expand({ cwd: cfg.src+'/', filter: 'isFile'},'*.html'),
 			path = require('path'),
-			phantonjs_path = 'phantomjs',
-			exec = require('child_process').exec,
+			phantomjs_path = 'phantomjs',
 			child,
 			done = grunt.task.current.async(),
 			Zip = require('node-zip'),
@@ -40,14 +39,14 @@ module.exports = function(grunt) {
 			fileNameRegex = new RegExp('[^\\w\\d_-]', 'ig'),
 			fileNameLengthMax = 116,
 			filesRenamed = new Object(),
-			filesCopy = new Array(),
+			filesCopy = [],
 
 		// ## The Functions
-		// ** convertStructure ** starts by creating the iRep folder structure, using the options set in the `_config.yml` file.
+		// ** convertStructure ** starts by creating the iRep folder structure, using the options set in the `package.json` file.
 		convertStructure = function() {
 			grunt.log.write('Creating iRep directory structure... ');
 
-			var info = new Array(),
+			var info = [],
 				filesOnly = (grunt.option('files')) ? grunt.option('files').split(',') : false;
 
 			files.forEach(function(file) {
@@ -59,7 +58,7 @@ module.exports = function(grunt) {
 				if((filesOnly && filesOnly.indexOf(fileName)>=0) || !filesOnly) {
 					// Create a new directory and copy the HTML file into it using the new name. Copy
 					// in the iRep JavaScript library and then the global assets directories as defined
-					// in the `_config.yml` file. Prepare file specific assets to be copied and then
+					// in the `package.json` file. Prepare file specific assets to be copied and then
 					// convert links to the iRep format before finally creating an array of filenames
 					// to screenshot.
 					grunt.file.mkdir(cfg.dest+'/'+destName);
@@ -99,7 +98,7 @@ module.exports = function(grunt) {
 
 
 		// ** copyGlobalAssets ** uses the `global_assets` variable set in
-		// `_config.yml`, to copy any file within those directories.
+		// `package.json`, to copy any file within those directories.
 		copyGlobalAssets = function(destName, dir, filter) {
 			var files = grunt.file.expand({ cwd: cfg.src+'/'+cfg.assets+'/'+dir+'/', filter: 'isFile'},'*'+filter);
 
@@ -114,9 +113,9 @@ module.exports = function(grunt) {
 			var regexCSS = new RegExp('url\\([\'"]?('+cfg.assets+'/.*?)[\'"]?\\)', 'ig'),
 				regexCSSLink = new RegExp('url\\([\'"]?(.*?)[\'"]?\\)', 'ig'),
 				regexBody = new RegExp('(?:href|src)=[\'"](.*?)[\'"]', 'ig'),
-				matchesCSS = new Array(),
-				matchesCSSLink = new Array(),
-				matchesBody = new Array();
+				matchesCSS = [],
+				matchesCSSLink = [],
+				matchesBody = [];
 
 			while ((matchesCSS = regexCSS.exec(fileSrc)) !== null) {
 				var match = { type: 'CSS', fileName: matchesCSS[1], dest: destName };
@@ -221,7 +220,7 @@ module.exports = function(grunt) {
 
 		// ** renameFile ** removes invalid characters and truncates file names so
 		// as to comply with iRep's naming convention. It aslo prefixes and suffixes
-		// the file name with the variables set in the `_config.yml` file.
+		// the file name with the variables set in the `package.json` file.
 		renameFile = function(fileName, filePrefix) {
 			var prefix = cfg.prefix+cfg.separator,
 				suffix = cfg.separator+cfg.suffix,
@@ -286,7 +285,7 @@ module.exports = function(grunt) {
 						  'CLM_ID_vod__c='+cfg.CLM_ID_vod__c+'\n'+
 						  // that's the wrong Veeva object field-name for `PRODUCT` and `PRESENTATION`
 						  // can't find the right ones yet
-						  'Disable_Actions_vod__c=Swipe_vod';
+						  //'Disable_Actions_vod__c=Swipe_vod';
 
 				grunt.file.write(cfg.dest+'/ctlfile/'+destName+'.ctl', content , {encoding: 'utf8'});
 			});
@@ -311,7 +310,7 @@ module.exports = function(grunt) {
 			var count = 0,
 				files = filesDone.slice(0),
 				child,
-				errors = new Array(),
+				errors = [],
 
 				takeScreenshot = function(file) {
 					im.resize({srcPath: cfg.dest+'/'+file+'/'+file+'-full.png', dstPath: cfg.dest+'/'+file+'/'+file+'-thumb.png', width: 200, height: 150, format: 'png'}, function(error, stdout) {
@@ -329,7 +328,7 @@ module.exports = function(grunt) {
 			progressHTML = new progressBar('Taking screenshots of HTML files [:bar] :percent ', { total: filesDone.length, complete: '=', incomplete: ' ', width: 20});
 			progressHTML.tick(0);
 
-			child = grunt.util.spawn({ cmd: phantonjs_path, args: ['screenshot.js', cfg.dest, filesDone.join(',')]}, function() {
+			child = grunt.util.spawn({ cmd: phantomjs_path, args: ['screenshot.js', cfg.dest, filesDone.join(',')]}, function() {
 				if(errors.length>0) {
 					grunt.log.write(grunt.log.wordlist(['\nWarning: JavaScript errors were detected in the following files:\n\t'+errors.join('\n\t')],{color: 'yellow'}));
 				}
