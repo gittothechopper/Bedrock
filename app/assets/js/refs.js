@@ -50,13 +50,12 @@ var refsModule = (function () {
 				high = split[1],
 				low = split[0] - 1;
 
-				while(low++ < high) {
+				while (low++ < high) {
 					result.push(low);
 				}
 			}
 		}
 
-		console.log(result);
 		openRef(result);
 	}
 
