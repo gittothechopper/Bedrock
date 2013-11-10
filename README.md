@@ -84,7 +84,13 @@ It does a lot docs can be found here http://havasite.havaslynx.com/sites/iRepper
 
 ####Scaffolder
 
-http://node.alexmeah.com:3000
+This will generate all files and folders as well as some starter code from a csv file, instructions, starter csv and online version here http://node.alexmeah.com:3000
+
+######Mac Users 
+
+Use this it has less steps and is a lot quicker, plus it work offline
+
+http://alexmeah.com/download/InstaRep.dmg
 
 ####Icon Generator
 
