@@ -32,8 +32,3 @@
 		};
 	}
 }());
-
-function getId(id) {
-	'use strict';
-	return document.getElementById(id);
-}

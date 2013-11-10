@@ -4,6 +4,11 @@ var modalModule = (function () {
 	// Cache modal bg
 	var modalBg;
 
+	function getId(id) {
+		'use strict';
+		return document.getElementById(id);
+	}
+
 	function init() {
 
 		modalBg = getId('modal-bg');
@@ -16,11 +21,6 @@ var modalModule = (function () {
 		$(document).on('click', '.close-modal', function () {
 			closeModal($(this).parent());
 		});
-	}
-
-	function displayNone() {
-		this.style.display = 'none';
-		this.removeEventListener('webkitTransitionEnd',displayNone,false);
 	}
 
 	function openModal(id) {
@@ -52,13 +52,19 @@ var modalModule = (function () {
 			window.requestAnimationFrame(function () {
 				el[0].classList.remove('active');
 				el[0].style.display = 'none';
+				$(modalBg).on('webkitTransitionEnd transitionend', function () {
+					$(this)[0].style.display = 'none';
+					$(this).off();
+				});
 				modalBg.classList.remove('active');
-				modalBg.addEventListener('webkitTransitionEnd transitionend', displayNone, false);
 			});
 		} else {
 			window.requestAnimationFrame(function () {
+				el.on('webkitTransitionEnd transitionend', function () {
+					$(this)[0].style.display = 'none';
+					$(this).off();
+				});
 				el[0].classList.remove('active');
-				el[0].addEventListener('webkitTransitionEnd transitionend', displayNone, false);
 			});
 		}
 	}
