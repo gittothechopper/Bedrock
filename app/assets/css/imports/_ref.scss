@@ -1,5 +1,8 @@
-#Reference {
+#References {
 	display: none;
+	max-height: 80%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 sup[data-refs] {
