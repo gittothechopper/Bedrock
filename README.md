@@ -7,7 +7,7 @@ This is a clone of generator-havas without the yeoman over head. It assumes iRep
 
 - Handlebars Templating (https://github.com/danharper/Handlebars-Helpers)
 - iOS specific auto-prefixing no more -webkit-
-- Stylus
+- SASS
 - Minification of all the things
 - Removal of unused assets
 - etc.
@@ -90,7 +90,7 @@ This will generate all files and folders as well as some starter code from a csv
 
 Use this it has less steps and is a lot quicker, plus it work offline
 
-http://alexmeah.com/download/InstaRep.dmg
+http://alexmeah.com/downloads/InstaRep.dmg
 
 ####Icon Generator
 
